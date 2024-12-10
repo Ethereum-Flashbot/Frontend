@@ -9,6 +9,8 @@ export const Form = () => {
     const [ethForLP, setEthForLP] = useState('');
     const [gasLimitForLP, setGasLimitForLP] = useState('');
     const [gasLimitForSwap, setGasLimitForSwap] = useState('');
+    const [tokenAddress, setTokenAddress] = useState('');
+    const [tokenAmount, setTokenAmount] = useState('');
 
     const handleSubmit = async () => {
 
@@ -35,6 +37,8 @@ export const Form = () => {
             swap_wallets: swapWalletsArr,
             swap_amounts: swapTokenAmountsArr,
             eth_lp: ethForLP,
+            token_address: tokenAddress,
+            token_percent: tokenAmount,
             gas_limit_lp: gasLimitForLP,
             gas_limit_swap: gasLimitForSwap,
         }
@@ -78,7 +82,18 @@ export const Form = () => {
                     <p className="text-gray-600 text-xs italic">Please split keys by enter!</p>
                 </div>
             </div>
+
             <div className="flex flex-wrap -mx-3 mb-2">
+                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                           htmlFor="grid-city-1">
+                        Token Address for LP
+                    </label>
+                    <input onChange={(e) => setTokenAddress(e.target.value)}
+                           className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           id="grid-city-1" type="text" placeholder="0.1"/>
+                </div>
+
                 <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                            htmlFor="grid-city-1">
@@ -88,7 +103,19 @@ export const Form = () => {
                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                            id="grid-city-1" type="text" placeholder="0.1"/>
                 </div>
+
                 <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                           htmlFor="grid-city-2">
+                        Token Amount for lp (%)
+                    </label>
+                    <input onChange={(e) => setTokenAmount(e.target.value)}
+                           className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           id="grid-city-2" type="text" placeholder="95"/>
+                </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-2">
+                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                            htmlFor="grid-city-2">
                         GAS LIMIT FOR LP
@@ -97,7 +124,7 @@ export const Form = () => {
                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                            id="grid-city-2" type="text" placeholder="300000"/>
                 </div>
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                            htmlFor="grid-zip">
                         GAS LIMIT FOR SWAP
